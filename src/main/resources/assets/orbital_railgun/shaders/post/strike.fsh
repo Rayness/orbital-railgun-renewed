@@ -5,11 +5,13 @@
 
 uniform sampler2D DiffuseSampler;
 uniform sampler2D DepthSampler;
-uniform mat4 InverseTransformMatrix;
-uniform vec3 CameraPosition;
-uniform vec3 BlockPosition;
-
-uniform float iTime;
+layout(std140) uniform RailgunConfig {
+    mat4 InverseTransformMatrix;
+    float iTime;
+    float IsBlockHit;
+    vec3 CameraPosition;
+    vec3 BlockPosition;
+};
 
 const vec3 blue = vec3(0.62, 0.93, 0.93);
 

@@ -1,6 +1,5 @@
 package io.github.mishkis.orbital_railgun.client.rendering;
 
-import com.mojang.blaze3d.systems.RenderPass;
 import io.github.mishkis.orbital_railgun.OrbitalRailgun;
 import io.github.mishkis.orbital_railgun.item.OrbitalRailgunItem;
 import io.github.mishkis.orbital_railgun.sound.OrbitalRailgunSounds;
@@ -27,7 +26,7 @@ public class OrbitalRailgunGuiShader extends AbstractOrbitalRailgunShader {
 
     @Override
     protected boolean shouldRender() {
-        return client.player != null && client.player.getUseItem().getItem() instanceof OrbitalRailgunItem;
+        return client != null && client.player != null && client.player.getUseItem().getItem() instanceof OrbitalRailgunItem;
     }
 
     @Override
@@ -62,8 +61,12 @@ public class OrbitalRailgunGuiShader extends AbstractOrbitalRailgunShader {
     }
 
     @Override
-    protected void applyExtraUniforms(RenderPass renderPass) {
-        renderPass.setUniform("IsBlockHit", isBlockHit);
-        renderPass.setUniform("BlockPosition", hitPosition.x, hitPosition.y, hitPosition.z);
+    protected Vector3f getBlockPositionUniform() {
+        return hitPosition;
+    }
+
+    @Override
+    protected float getIsBlockHitUniform() {
+        return isBlockHit;
     }
 }

@@ -1,11 +1,13 @@
 #version 330 compatibility
 
 uniform sampler2D DiffuseSampler;
-uniform vec3 CameraPosition;
-
-uniform vec3 BlockPosition;
-
-uniform float iTime;
+layout(std140) uniform RailgunConfig {
+    mat4 InverseTransformMatrix;
+    float iTime;
+    float IsBlockHit;
+    vec3 CameraPosition;
+    vec3 BlockPosition;
+};
 
 in vec2 texCoord;
 in float viewHeight;

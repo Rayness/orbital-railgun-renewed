@@ -1,6 +1,5 @@
 package io.github.mishkis.orbital_railgun.client.rendering;
 
-import com.mojang.blaze3d.systems.RenderPass;
 import io.github.mishkis.orbital_railgun.OrbitalRailgun;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -21,7 +20,7 @@ public class OrbitalRailgunShader extends AbstractOrbitalRailgunShader {
 
     @Override
     protected boolean shouldRender() {
-        var level = client.level;
+        var level = client != null ? client.level : null;
         return BlockPosition != null && level != null && level.dimension() == Dimension;
     }
 
@@ -35,9 +34,7 @@ public class OrbitalRailgunShader extends AbstractOrbitalRailgunShader {
     }
 
     @Override
-    protected void applyExtraUniforms(RenderPass renderPass) {
-        if (BlockPosition != null) {
-            renderPass.setUniform("BlockPosition", BlockPosition.x, BlockPosition.y, BlockPosition.z);
-        }
+    protected Vector3f getBlockPositionUniform() {
+        return BlockPosition;
     }
 }

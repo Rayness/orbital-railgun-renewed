@@ -24,7 +24,7 @@ public class OrbitalRailgunClient {
     public OrbitalRailgunClient(IEventBus modEventBus) {
         for (AbstractOrbitalRailgunShader shader : List.of(OrbitalRailgunShader.INSTANCE, OrbitalRailgunGuiShader.INSTANCE)) {
             NeoForge.EVENT_BUS.addListener((ClientTickEvent.Post event) -> shader.onClientTick(event));
-            NeoForge.EVENT_BUS.addListener((RenderLevelStageEvent event) -> shader.onRenderLevelStage(event));
+            NeoForge.EVENT_BUS.addListener((RenderLevelStageEvent.AfterLevel event) -> shader.onRenderLevelStage(event));
         }
 
         NeoForge.EVENT_BUS.addListener(this::playEquipSound);

@@ -10,7 +10,7 @@ import net.minecraft.client.multiplayer.MultiPlayerGameMode;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
-import net.neoforged.neoforge.network.PacketDistributor;
+import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -37,7 +37,7 @@ public class MinecraftMixin {
                 OrbitalRailgunShader.INSTANCE.BlockPosition = blockHitResult.getBlockPos().getCenter().toVector3f();
                 OrbitalRailgunShader.INSTANCE.Dimension = player.level().dimension();
 
-                PacketDistributor.sendToServer(new ShootPayload(blockHitResult.getBlockPos()));
+                ClientPacketDistributor.sendToServer(new ShootPayload(blockHitResult.getBlockPos()));
             }
         }
     }

@@ -5,31 +5,38 @@
   },
   "passes": [
     {
-      "vertex_shader": "orbital_railgun:post/strike",
+      "vertex_shader": "orbital_railgun:post/gui",
       "fragment_shader": "orbital_railgun:post/strike",
       "inputs": [
         { "sampler_name": "Diffuse", "target": "minecraft:main" },
         { "sampler_name": "Depth", "target": "minecraft:main", "use_depth_buffer": true }
       ],
-      "uniforms": [
-        { "name": "InverseTransformMatrix", "type": "matrix4x4" },
-        { "name": "CameraPosition", "type": "vec3" },
-        { "name": "BlockPosition", "type": "vec3" },
-        { "name": "iTime", "type": "float" }
-      ],
+      "uniforms": {
+        "RailgunConfig": [
+          { "name": "InverseTransformMatrix", "type": "matrix4x4", "value": [ 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0 ] },
+          { "name": "iTime", "type": "float", "value": 0.0 },
+          { "name": "IsBlockHit", "type": "float", "value": 0.0 },
+          { "name": "CameraPosition", "type": "vec3", "value": [ 0.0, 0.0, 0.0 ] },
+          { "name": "BlockPosition", "type": "vec3", "value": [ 0.0, 0.0, 0.0 ] }
+        ]
+      },
       "output": "strike"
     },
     {
-      "vertex_shader": "orbital_railgun:post/gui",
+      "vertex_shader": "orbital_railgun:post/chromatic",
       "fragment_shader": "orbital_railgun:post/chromatic_abjuration",
       "inputs": [
         { "sampler_name": "Diffuse", "target": "strike" }
       ],
-      "uniforms": [
-        { "name": "CameraPosition", "type": "vec3" },
-        { "name": "BlockPosition", "type": "vec3" },
-        { "name": "iTime", "type": "float" }
-      ],
+      "uniforms": {
+        "RailgunConfig": [
+          { "name": "InverseTransformMatrix", "type": "matrix4x4", "value": [ 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0 ] },
+          { "name": "iTime", "type": "float", "value": 0.0 },
+          { "name": "IsBlockHit", "type": "float", "value": 0.0 },
+          { "name": "CameraPosition", "type": "vec3", "value": [ 0.0, 0.0, 0.0 ] },
+          { "name": "BlockPosition", "type": "vec3", "value": [ 0.0, 0.0, 0.0 ] }
+        ]
+      },
       "output": "chromatic_abjuration"
     },
     {
@@ -38,9 +45,11 @@
       "inputs": [
         { "sampler_name": "In", "target": "chromatic_abjuration" }
       ],
-      "uniforms": [
-        { "name": "ColorModulate", "type": "vec4", "values": [ 1.0, 1.0, 1.0, 1.0 ] }
-      ],
+      "uniforms": {
+        "BlitConfig": [
+          { "name": "ColorModulate", "type": "vec4", "value": [ 1.0, 1.0, 1.0, 1.0 ] }
+        ]
+      },
       "output": "minecraft:main"
     }
   ]

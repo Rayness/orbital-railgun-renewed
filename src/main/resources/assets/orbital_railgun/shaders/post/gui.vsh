@@ -1,9 +1,14 @@
 #version 330 compatibility
 
+#moj_import <minecraft:projection.glsl>
+
 in vec4 Position;
 
-uniform mat4 ProjMat;
-uniform vec2 OutSize;
+layout(std140) uniform SamplerInfo {
+    vec2 OutSize;
+    vec2 DiffuseSize;
+    vec2 DepthSize;
+};
 
 out vec2 texCoord;
 out float viewHeight;
