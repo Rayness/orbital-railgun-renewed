@@ -16,14 +16,14 @@ displayURL = "https://github.com/Mishkis/orbital-railgun"
 [[dependencies.orbital_railgun]]
 modId = "neoforge"
 type = "required"
-versionRange = "[21.1,)"
+versionRange = "[21.4,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.orbital_railgun]]
 modId = "minecraft"
 type = "required"
-versionRange = "[1.21.1]"
+versionRange = "[1.21.4]"
 ordering = "NONE"
 side = "BOTH"
 

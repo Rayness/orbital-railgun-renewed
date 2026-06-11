@@ -1,0 +1,9 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "orbital_railgun:item/orbital_railgun",
+    "model": {
+      "type": "geckolib:geckolib"
+    }
+  }
+}

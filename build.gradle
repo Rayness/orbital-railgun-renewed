@@ -54,10 +54,8 @@ neoForge {
 }
 
 dependencies {
-    implementation "software.bernie.geckolib:geckolib-neoforge-1.21.1:${geckolib_version}"
+    implementation "software.bernie.geckolib:geckolib-neoforge-${minecraft_version}:${geckolib_version}"
 
-    // Dev-only: FPS comparison and post-shader compatibility testing with Sodium
-    runtimeOnly "maven.modrinth:sodium:mc1.21.1-0.6.13-neoforge"
 }
 
 tasks.withType(JavaCompile).configureEach {

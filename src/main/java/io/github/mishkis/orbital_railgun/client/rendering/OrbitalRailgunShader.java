@@ -7,7 +7,7 @@ import net.minecraft.world.level.Level;
 import org.joml.Vector3f;
 
 public class OrbitalRailgunShader extends AbstractOrbitalRailgunShader {
-    public static final ResourceLocation ORBITAL_RAILGUN_SHADER = ResourceLocation.fromNamespaceAndPath(OrbitalRailgun.MOD_ID, "shaders/post/orbital_railgun.json");
+    public static final ResourceLocation ORBITAL_RAILGUN_SHADER = ResourceLocation.fromNamespaceAndPath(OrbitalRailgun.MOD_ID, "orbital_railgun");
     public static final OrbitalRailgunShader INSTANCE = new OrbitalRailgunShader();
 
     public Vector3f BlockPosition = null;

@@ -15,7 +15,7 @@ public class OrbitalRailgunItems {
 
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(OrbitalRailgun.MOD_ID);
 
-    public static final DeferredItem<OrbitalRailgunItem> ORBITAL_RAILGUN = ITEMS.register("orbital_railgun", OrbitalRailgunItem::new);
+    public static final DeferredItem<OrbitalRailgunItem> ORBITAL_RAILGUN = ITEMS.registerItem("orbital_railgun", OrbitalRailgunItem::new);
 
     public static void addToCreativeTab(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.COMBAT) {

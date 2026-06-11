@@ -46,10 +46,10 @@ public class OrbitalRailgunStrikeManager {
                     continue;
                 }
 
-                DamageSource damageSource = new DamageSource(level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(STRIKE_DAMAGE));
+                DamageSource damageSource = level.damageSources().source(STRIKE_DAMAGE);
                 strike.entities().forEach(entity -> {
                     if (entity.level().dimension() == dimension && entity.position().subtract(blockPos.getCenter()).lengthSqr() <= RADIUS_SQUARED) {
-                        entity.hurt(damageSource, 100000f);
+                        entity.hurtServer(level, damageSource, 100000f);
                     }
                 });
 
@@ -73,7 +73,7 @@ public class OrbitalRailgunStrikeManager {
     }
 
     private static void explode(BlockPos origin, Level level) {
-        for (int y = level.getMinBuildHeight(); y <= level.getMaxBuildHeight(); y++) {
+        for (int y = level.getMinY(); y <= level.getMaxY(); y++) {
             for (int x = -RADIUS; x <= RADIUS; x++) {
                 for (int z = -RADIUS; z <= RADIUS; z++) {
                     if (mask[x + RADIUS][z + RADIUS]) {

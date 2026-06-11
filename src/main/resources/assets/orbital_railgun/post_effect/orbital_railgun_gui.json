@@ -1,0 +1,22 @@
+{
+  "targets": {
+    "gui": {}
+  },
+  "passes": [
+    {
+      "program": "orbital_railgun:post/gui",
+      "inputs": [
+        { "sampler_name": "Diffuse", "target": "minecraft:main" },
+        { "sampler_name": "Depth", "target": "minecraft:main", "use_depth_buffer": true }
+      ],
+      "output": "gui"
+    },
+    {
+      "program": "minecraft:post/blit",
+      "inputs": [
+        { "sampler_name": "In", "target": "gui" }
+      ],
+      "output": "minecraft:main"
+    }
+  ]
+}

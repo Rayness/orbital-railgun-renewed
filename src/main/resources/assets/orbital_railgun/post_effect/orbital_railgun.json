@@ -1,0 +1,30 @@
+{
+  "targets": {
+    "strike": {},
+    "chromatic_abjuration": {}
+  },
+  "passes": [
+    {
+      "program": "orbital_railgun:post/strike",
+      "inputs": [
+        { "sampler_name": "Diffuse", "target": "minecraft:main" },
+        { "sampler_name": "Depth", "target": "minecraft:main", "use_depth_buffer": true }
+      ],
+      "output": "strike"
+    },
+    {
+      "program": "orbital_railgun:post/chromatic_abjuration",
+      "inputs": [
+        { "sampler_name": "Diffuse", "target": "strike" }
+      ],
+      "output": "chromatic_abjuration"
+    },
+    {
+      "program": "minecraft:post/blit",
+      "inputs": [
+        { "sampler_name": "In", "target": "chromatic_abjuration" }
+      ],
+      "output": "minecraft:main"
+    }
+  ]
+}

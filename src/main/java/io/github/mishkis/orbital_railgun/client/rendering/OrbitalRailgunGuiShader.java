@@ -10,7 +10,7 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 
 public class OrbitalRailgunGuiShader extends AbstractOrbitalRailgunShader {
-    public static final ResourceLocation ORBITAL_RAILGUN_GUI_SHADER = ResourceLocation.fromNamespaceAndPath(OrbitalRailgun.MOD_ID, "shaders/post/orbital_railgun_gui.json");
+    public static final ResourceLocation ORBITAL_RAILGUN_GUI_SHADER = ResourceLocation.fromNamespaceAndPath(OrbitalRailgun.MOD_ID, "orbital_railgun_gui");
     public static final OrbitalRailgunGuiShader INSTANCE = new OrbitalRailgunGuiShader();
 
     public HitResult hitResult;
