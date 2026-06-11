@@ -33,7 +33,7 @@ Loader: **NeoForge** only. Environment: client **and** server.
 ## Description (long, Markdown)
 
 ```markdown
-# Orbital Railgun: Renewed
+![Orbital Railgun: Renewed](https://raw.githubusercontent.com/Rayness/orbital-railgun-renewed/1.21.1/media/banner-960.png)
 
 **An unofficial NeoForge port of [Orbital Railgun](https://modrinth.com/mod/orbital-railgun) by Mishkis** (MIT), brought to modern Minecraft versions — from 1.21.1 all the way to 26.1.
 
