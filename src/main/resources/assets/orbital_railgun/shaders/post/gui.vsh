@@ -1,8 +1,4 @@
-#version 330 compatibility
-
-#moj_import <minecraft:projection.glsl>
-
-in vec4 Position;
+#version 330
 
 layout(std140) uniform SamplerInfo {
     vec2 OutSize;
@@ -15,10 +11,10 @@ out float viewHeight;
 out float viewWidth;
 
 void main() {
-    vec4 outPos = ProjMat * vec4(Position.xy * OutSize, 0.0, 1.0);
-    gl_Position = vec4(outPos.xy, 0.2, 1.0);
+    vec2 uv = vec2((gl_VertexID << 1) & 2, gl_VertexID & 2);
+    gl_Position = vec4(uv * vec2(2.0, 2.0) + vec2(-1.0, -1.0), 0.0, 1.0);
 
-    texCoord = Position.xy;
+    texCoord = uv;
     viewHeight = OutSize.y;
     viewWidth = OutSize.x;
 }
