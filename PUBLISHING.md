@@ -97,7 +97,7 @@ First public release of the NeoForge port.
 
 - [ ] Create Modrinth project `orbital-railgun-renewed` (user account)
 - [ ] Create CurseForge project (user account)
-- [ ] Icon: reuse `assets/orbital_railgun/icon.png` (original MIT asset) or draw a new one
+- [x] Icon: `media/icon-512.png` — original art (MIT) upscaled to 512×512 with a "RENEWED" ribbon
 - [ ] Gallery: screenshots of aiming HUD, beam, crater
 - [ ] Upload `orbital_railgun-1.2.0+mc<mcver>.jar` per game version (six files, see table above)
 - [ ] Link original mod + GitHub repo of the port
