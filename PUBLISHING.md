@@ -28,7 +28,7 @@ Loader: **NeoForge** only. Environment: client **and** server.
 
 ## Summary (short description)
 
-> Call down a devastating orbital strike. Unofficial NeoForge port of Mishkis' Orbital Railgun for modern Minecraft (1.21.1 → 26.1) — now with sound.
+> Call down a devastating orbital strike. Unofficial NeoForge port of Mishkis' Orbital Railgun for modern Minecraft (1.21.1 → 26.1).
 
 ## Description (long, Markdown)
 
@@ -42,7 +42,6 @@ Craft the Orbital Railgun, hold right-click to aim through a full-screen targeti
 ## Features
 
 - 🛰️ The original orbital strike experience: targeting shader, sky beam, massive crater
-- 🔊 **Sound!** The original mod shipped silent — this port restores the equip, scope and strike sounds that were left unused in the original repository (strike audible up to 500 blocks)
 - ⚡ Faster post-explosion screen effects: the vignette clears in ~8 s instead of ~20 s
 - 🧊 No extra rendering libraries — Satin was replaced with the vanilla post-processing pipeline
 - ✅ Sodium compatible
@@ -70,9 +69,9 @@ This is an **unofficial** port published under the original MIT license. Please 
 наведения (ПКМ) и вызови орбитальный удар (ЛКМ): через 30 секунд всё в радиусе
 24 блоков испаряется до бедрока.
 
-Отличия от оригинала: добавлены звуки (в оригинале их не было), ускорено
-затухание экранных эффектов после взрыва, заменена библиотека Satin на
-ванильный пост-процессинг. Требуется GeckoLib. Совместим с Sodium.
+Отличия от оригинала: ускорено затухание экранных эффектов после взрыва,
+заменена библиотека Satin на ванильный пост-процессинг.
+Требуется GeckoLib. Совместим с Sodium.
 ```
 
 ## Version-file metadata (per upload)
@@ -88,7 +87,6 @@ Changelog text for the first public release (same for every version file):
 First public release of the NeoForge port.
 
 - Full port of Orbital Railgun 1.1 (Fabric 1.20.1) to NeoForge
-- Restored equip / scope / strike sounds (unused in the original)
 - Faster post-explosion screen-effect fade
 - Satin replaced with the vanilla post-processing pipeline (no extra rendering deps)
 ```
