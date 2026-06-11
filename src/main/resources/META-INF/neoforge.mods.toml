@@ -1,0 +1,38 @@
+modLoader = "javafml"
+loaderVersion = "[4,)"
+license = "MIT"
+issueTrackerURL = "https://github.com/Mishkis/orbital-railgun/issues"
+
+[[mods]]
+modId = "orbital_railgun"
+version = "${file.jarVersion}"
+displayName = "Orbital Railgun: Renewed"
+description = '''Adds an Orbital Railgun to the game! Unofficial NeoForge port of the mod by Mishkis.'''
+logoFile = "assets/orbital_railgun/icon.png"
+authors = "Mishkis"
+credits = "Original mod by Mishkis; unofficial NeoForge port by Rayness"
+displayURL = "https://github.com/Mishkis/orbital-railgun"
+
+[[dependencies.orbital_railgun]]
+modId = "neoforge"
+type = "required"
+versionRange = "[21.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.orbital_railgun]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.21.1]"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.orbital_railgun]]
+modId = "geckolib"
+type = "required"
+versionRange = "[4.7,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[mixins]]
+config = "orbital_railgun.mixins.json"

@@ -1,0 +1,27 @@
+{
+  "equip": {
+    "subtitle": "subtitle.orbital_railgun.equip",
+    "sounds": [
+      "orbital_railgun:equip"
+    ]
+  },
+  "scope_on": {
+    "subtitle": "subtitle.orbital_railgun.scope_on",
+    "sounds": [
+      "orbital_railgun:scope-on"
+    ]
+  },
+  "railgun_shoot": {
+    "subtitle": "subtitle.orbital_railgun.railgun_shoot",
+    "sounds": [
+      {
+        "name": "orbital_railgun:railgun-shoot",
+        "volume": 1.0,
+        "pitch": 1.0,
+        "attenuation_distance": 500,
+        "stream": true
+      }
+    ],
+    "category": "player"
+  }
+}
