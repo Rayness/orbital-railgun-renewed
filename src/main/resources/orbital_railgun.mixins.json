@@ -6,8 +6,7 @@
   "client": [
     "AbstractClientPlayerMixin",
     "MinecraftMixin",
-    "MouseHandlerMixin",
-    "PostChainAccessor"
+    "MouseHandlerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

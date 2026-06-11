@@ -6,7 +6,6 @@
 uniform sampler2D DiffuseSampler;
 uniform sampler2D DepthSampler;
 uniform mat4 InverseTransformMatrix;
-uniform mat4 ModelViewMat;
 uniform vec3 CameraPosition;
 uniform vec3 BlockPosition;
 
@@ -90,7 +89,7 @@ vec3 worldPos(vec3 point) {
     vec4 homPos = InverseTransformMatrix * vec4(ndc, 1.0);
     vec3 viewPos = homPos.xyz / homPos.w;
 
-    return (inverse(ModelViewMat) * vec4(viewPos, 1.)).xyz + CameraPosition;
+    return viewPos + CameraPosition;
 }
 
 float shockwave(vec3 point) {

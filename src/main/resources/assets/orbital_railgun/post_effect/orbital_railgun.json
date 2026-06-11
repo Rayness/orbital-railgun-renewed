@@ -5,24 +5,41 @@
   },
   "passes": [
     {
-      "program": "orbital_railgun:post/strike",
+      "vertex_shader": "orbital_railgun:post/strike",
+      "fragment_shader": "orbital_railgun:post/strike",
       "inputs": [
         { "sampler_name": "Diffuse", "target": "minecraft:main" },
         { "sampler_name": "Depth", "target": "minecraft:main", "use_depth_buffer": true }
       ],
+      "uniforms": [
+        { "name": "InverseTransformMatrix", "type": "matrix4x4" },
+        { "name": "CameraPosition", "type": "vec3" },
+        { "name": "BlockPosition", "type": "vec3" },
+        { "name": "iTime", "type": "float" }
+      ],
       "output": "strike"
     },
     {
-      "program": "orbital_railgun:post/chromatic_abjuration",
+      "vertex_shader": "orbital_railgun:post/gui",
+      "fragment_shader": "orbital_railgun:post/chromatic_abjuration",
       "inputs": [
         { "sampler_name": "Diffuse", "target": "strike" }
+      ],
+      "uniforms": [
+        { "name": "CameraPosition", "type": "vec3" },
+        { "name": "BlockPosition", "type": "vec3" },
+        { "name": "iTime", "type": "float" }
       ],
       "output": "chromatic_abjuration"
     },
     {
-      "program": "minecraft:post/blit",
+      "vertex_shader": "minecraft:post/blit",
+      "fragment_shader": "minecraft:post/blit",
       "inputs": [
         { "sampler_name": "In", "target": "chromatic_abjuration" }
+      ],
+      "uniforms": [
+        { "name": "ColorModulate", "type": "vec4", "values": [ 1.0, 1.0, 1.0, 1.0 ] }
       ],
       "output": "minecraft:main"
     }

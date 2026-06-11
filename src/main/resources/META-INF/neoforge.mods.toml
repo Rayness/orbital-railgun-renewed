@@ -16,21 +16,21 @@ displayURL = "https://github.com/Mishkis/orbital-railgun"
 [[dependencies.orbital_railgun]]
 modId = "neoforge"
 type = "required"
-versionRange = "[21.4,)"
+versionRange = "[21.5,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.orbital_railgun]]
 modId = "minecraft"
 type = "required"
-versionRange = "[1.21.4]"
+versionRange = "[1.21.5]"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.orbital_railgun]]
 modId = "geckolib"
 type = "required"
-versionRange = "[4.7,)"
+versionRange = "[5,)"
 ordering = "AFTER"
 side = "BOTH"
 

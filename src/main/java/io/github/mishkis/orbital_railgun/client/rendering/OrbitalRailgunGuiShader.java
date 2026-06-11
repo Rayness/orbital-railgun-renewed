@@ -1,5 +1,6 @@
 package io.github.mishkis.orbital_railgun.client.rendering;
 
+import com.mojang.blaze3d.systems.RenderPass;
 import io.github.mishkis.orbital_railgun.OrbitalRailgun;
 import io.github.mishkis.orbital_railgun.item.OrbitalRailgunItem;
 import io.github.mishkis.orbital_railgun.sound.OrbitalRailgunSounds;
@@ -8,12 +9,16 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
+import org.joml.Vector3f;
 
 public class OrbitalRailgunGuiShader extends AbstractOrbitalRailgunShader {
     public static final ResourceLocation ORBITAL_RAILGUN_GUI_SHADER = ResourceLocation.fromNamespaceAndPath(OrbitalRailgun.MOD_ID, "orbital_railgun_gui");
     public static final OrbitalRailgunGuiShader INSTANCE = new OrbitalRailgunGuiShader();
 
     public HitResult hitResult;
+
+    private float isBlockHit = 0f;
+    private Vector3f hitPosition = new Vector3f();
 
     @Override
     protected ResourceLocation getIdentifier() {
@@ -39,20 +44,26 @@ public class OrbitalRailgunGuiShader extends AbstractOrbitalRailgunShader {
     }
 
     @Override
-    protected void setExtraUniforms(float partialTick) {
+    protected void prepareExtraUniforms(float partialTick) {
         hitResult = client.player.pick(300f, partialTick, false);
         switch (hitResult.getType()) {
             case BLOCK:
-                setUniform("IsBlockHit", uniform -> uniform.set(1f));
-                setUniform("BlockPosition", uniform -> uniform.set(((BlockHitResult) hitResult).getBlockPos().getCenter().toVector3f()));
+                isBlockHit = 1f;
+                hitPosition = ((BlockHitResult) hitResult).getBlockPos().getCenter().toVector3f();
                 break;
             case ENTITY:
-                setUniform("IsBlockHit", uniform -> uniform.set(1f));
-                setUniform("BlockPosition", uniform -> uniform.set(((EntityHitResult) hitResult).getEntity().blockPosition().getCenter().toVector3f()));
+                isBlockHit = 1f;
+                hitPosition = ((EntityHitResult) hitResult).getEntity().blockPosition().getCenter().toVector3f();
                 break;
             case MISS:
-                setUniform("IsBlockHit", uniform -> uniform.set(0f));
+                isBlockHit = 0f;
                 break;
         }
+    }
+
+    @Override
+    protected void applyExtraUniforms(RenderPass renderPass) {
+        renderPass.setUniform("IsBlockHit", isBlockHit);
+        renderPass.setUniform("BlockPosition", hitPosition.x, hitPosition.y, hitPosition.z);
     }
 }
