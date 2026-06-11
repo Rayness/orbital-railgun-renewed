@@ -11,7 +11,7 @@ Each Minecraft version lives on its own git branch:
 | Branch | Minecraft | Loader | Status |
 |---|---|---|---|
 | `1.21.1` | 1.21.1 | NeoForge 21.1 | ✅ done |
-| `1.21.4` | 1.21.4 | NeoForge 21.4 | 🔜 planned |
+| `1.21.4` | 1.21.4 | NeoForge 21.4 | ✅ done |
 | `1.21.5` | 1.21.5 | NeoForge 21.5 | 🔜 planned |
 | `1.21.8` | 1.21.8 | NeoForge 21.8 | 🔜 planned |
 | `1.21.11` | 1.21.11 | NeoForge 21.11 | 🔜 planned |

@@ -2,6 +2,7 @@ package io.github.mishkis.orbital_railgun.client.rendering;
 
 import com.mojang.blaze3d.resource.GraphicsResourceAllocator;
 import com.mojang.blaze3d.shaders.AbstractUniform;
+import com.mojang.blaze3d.systems.RenderSystem;
 import io.github.mishkis.orbital_railgun.client.mixin.PostChainAccessor;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.PostChain;
@@ -10,6 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
 import org.joml.Matrix4f;
+import org.joml.Quaternionf;
 
 import java.util.Set;
 import java.util.function.Consumer;
@@ -63,14 +65,21 @@ public abstract class AbstractOrbitalRailgunShader {
 
         float partialTick = event.getPartialTick().getGameTimeDeltaPartialTick(false);
 
-        Matrix4f inverseTransformMatrix = new Matrix4f(event.getProjectionMatrix()).mul(event.getModelViewMatrix()).invert();
+        // The AFTER_LEVEL event does not carry the real model-view matrix on this
+        // version, so rebuild it from the camera rotation the same way vanilla does.
+        Matrix4f modelViewMatrix = new Matrix4f().rotation(event.getCamera().rotation().conjugate(new Quaternionf()));
+        Matrix4f inverseTransformMatrix = new Matrix4f(event.getProjectionMatrix()).mul(modelViewMatrix).invert();
         setUniform("InverseTransformMatrix", uniform -> uniform.set(inverseTransformMatrix));
         setUniform("CameraPosition", uniform -> uniform.set(event.getCamera().getPosition().toVector3f()));
         setUniform("iTime", uniform -> uniform.set((ticks + partialTick) / 20f));
         setExtraUniforms(partialTick);
 
+        RenderSystem.disableBlend();
+        RenderSystem.disableDepthTest();
+        RenderSystem.resetTextureMatrix();
+
         chain.process(client.getMainRenderTarget(), GraphicsResourceAllocator.UNPOOLED);
-        client.getMainRenderTarget().bindWrite(false);
+        client.getMainRenderTarget().bindWrite(true);
     }
 
     protected final void setUniform(String name, Consumer<AbstractUniform> setter) {
