@@ -10,7 +10,7 @@ import io.github.mishkis.orbital_railgun.client.mixin.PostPassAccessor;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.PostChain;
 import net.minecraft.client.renderer.PostPass;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
 import org.joml.Matrix4f;
@@ -27,7 +27,7 @@ import java.util.Set;
  * buffer is rebuilt each frame before the chain is processed.
  */
 public abstract class AbstractOrbitalRailgunShader {
-    private static final Set<ResourceLocation> EXTERNAL_TARGETS = Set.of(PostChain.MAIN_TARGET_ID);
+    private static final Set<Identifier> EXTERNAL_TARGETS = Set.of(PostChain.MAIN_TARGET_ID);
     private static final String UNIFORM_BLOCK = "RailgunConfig";
     // Field order matters: Std140Builder always pads a vec3 out to 16 bytes,
     // while GLSL packs a following scalar into the vec3's tail. Scalars
@@ -46,7 +46,7 @@ public abstract class AbstractOrbitalRailgunShader {
 
     protected int ticks = 0;
 
-    protected abstract ResourceLocation getIdentifier();
+    protected abstract Identifier getIdentifier();
 
     protected abstract boolean shouldRender();
 
@@ -94,12 +94,12 @@ public abstract class AbstractOrbitalRailgunShader {
             return;
         }
 
-        float partialTick = event.getPartialTick().getGameTimeDeltaPartialTick(false);
+        float partialTick = client.getDeltaTracker().getGameTimeDeltaPartialTick(false);
 
         prepareExtraUniforms(partialTick);
 
         Matrix4f inverseTransformMatrix = new Matrix4f(OrbitalRailgunMatrices.PROJECTION).mul(event.getModelViewMatrix()).invert();
-        Vector3f cameraPosition = event.getCamera().getPosition().toVector3f();
+        Vector3f cameraPosition = event.getLevelRenderState().cameraRenderState.pos.toVector3f();
         Vector3f blockPosition = getBlockPositionUniform();
         float time = (ticks + partialTick) / 20f;
         float isBlockHit = getIsBlockHitUniform();

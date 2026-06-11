@@ -38,7 +38,7 @@ public class OrbitalRailgunNetwork {
 
             List<Entity> nearby = serverPlayer.level().getEntities(serverPlayer, AABB.ofSize(blockPos.getCenter(), 500., 500., 500.));
             nearby.add(serverPlayer);
-            OrbitalRailgunStrikeManager.activeStrikes.add(new OrbitalRailgunStrikeManager.Strike(blockPos, nearby, serverPlayer.getServer().getTickCount(), serverPlayer.level().dimension()));
+            OrbitalRailgunStrikeManager.activeStrikes.add(new OrbitalRailgunStrikeManager.Strike(blockPos, nearby, serverPlayer.level().getServer().getTickCount(), serverPlayer.level().dimension()));
 
             nearby.forEach(entity -> {
                 if (entity instanceof ServerPlayer otherPlayer) {

@@ -4,14 +4,14 @@ import io.github.mishkis.orbital_railgun.OrbitalRailgun;
 import io.github.mishkis.orbital_railgun.item.OrbitalRailgunItem;
 import io.github.mishkis.orbital_railgun.sound.OrbitalRailgunSounds;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import org.joml.Vector3f;
 
 public class OrbitalRailgunGuiShader extends AbstractOrbitalRailgunShader {
-    public static final ResourceLocation ORBITAL_RAILGUN_GUI_SHADER = ResourceLocation.fromNamespaceAndPath(OrbitalRailgun.MOD_ID, "orbital_railgun_gui");
+    public static final Identifier ORBITAL_RAILGUN_GUI_SHADER = Identifier.fromNamespaceAndPath(OrbitalRailgun.MOD_ID, "orbital_railgun_gui");
     public static final OrbitalRailgunGuiShader INSTANCE = new OrbitalRailgunGuiShader();
 
     public HitResult hitResult;
@@ -20,7 +20,7 @@ public class OrbitalRailgunGuiShader extends AbstractOrbitalRailgunShader {
     private Vector3f hitPosition = new Vector3f();
 
     @Override
-    protected ResourceLocation getIdentifier() {
+    protected Identifier getIdentifier() {
         return ORBITAL_RAILGUN_GUI_SHADER;
     }
 

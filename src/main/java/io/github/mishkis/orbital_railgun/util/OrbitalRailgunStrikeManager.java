@@ -4,7 +4,7 @@ import io.github.mishkis.orbital_railgun.OrbitalRailgun;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
@@ -25,7 +25,7 @@ public class OrbitalRailgunStrikeManager {
     public record Strike(BlockPos pos, List<Entity> entities, int startTick, ResourceKey<Level> dimension) {}
 
     public static final Queue<Strike> activeStrikes = new ConcurrentLinkedQueue<>();
-    private static final ResourceKey<DamageType> STRIKE_DAMAGE = ResourceKey.create(Registries.DAMAGE_TYPE, ResourceLocation.fromNamespaceAndPath(OrbitalRailgun.MOD_ID, "strike"));
+    private static final ResourceKey<DamageType> STRIKE_DAMAGE = ResourceKey.create(Registries.DAMAGE_TYPE, Identifier.fromNamespaceAndPath(OrbitalRailgun.MOD_ID, "strike"));
     private static final int RADIUS = 24;
     private static final int RADIUS_SQUARED = RADIUS * RADIUS;
     private static final boolean[][] mask = new boolean[RADIUS * 2 + 1][RADIUS * 2 + 1];
